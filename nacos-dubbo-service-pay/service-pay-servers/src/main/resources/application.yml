@@ -1,0 +1,23 @@
+server:
+  port: 12140
+spring:
+  application:
+    name: service-pay-servers
+  main:
+    allow-bean-definition-overriding: true # bean 重名时覆盖
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+dubbo:
+  scan:
+    base-packages: com.nakara.microservice.service.pay.service
+  protocol:
+    port: 20891
+    name: dubbo
+  registry:
+    address: nacos://127.0.0.1:8848
+  application:
+    qos-enable: false # dubbo 运维服务是否开启
+  consumer:
+    check: false # 启动时是否检查依赖的服务
